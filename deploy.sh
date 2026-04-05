@@ -2,8 +2,11 @@
 
 IMAGE=$1
 
-export IMAGE_NAME=$IMAGE
-
+echo "Pulling latest image..."
 docker pull $IMAGE
-docker-compose down || true
+
+echo "Removing old container if exists..."
+docker rm -f react-app || true
+
+echo "Starting new container..."
 docker-compose up -d
