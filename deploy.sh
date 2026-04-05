@@ -9,4 +9,8 @@ echo "Removing old container if exists..."
 docker rm -f react-app || true
 
 echo "Starting new container..."
+
+export IMAGE_NAME=$IMAGE
+
+docker-compose down || true
 docker-compose up -d
